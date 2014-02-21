@@ -8,7 +8,7 @@ for x in xrange(0,100):
 	user= { 
 		"name": fake.name(), 
 		"age":  random.randint(10,50),
-		"married": (lambda x: 'yes' if x else 'no')(random.randint(0,1)),
+		"married": 'yes' if random.randint(0,1) else 'no',
 		"city": fake.city(),
 		"birthday": fake.date(pattern="%Y-%m-%d"),
 		"BMI": round(random.uniform(15, 30), 2)
