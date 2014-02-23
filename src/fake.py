@@ -1,19 +1,6 @@
-from faker import Faker
 import pandas as pd
-import random
+from dataFactory import DataFactory
 
-fake = Faker()
-users= []
-for x in xrange(0,100):
-	user= { 
-		"name": fake.name(), 
-		"age":  random.randint(10,50),
-		"married": 'yes' if random.randint(0,1) else 'no',
-		"city": fake.city(),
-		"birthday": fake.date(pattern="%Y-%m-%d"),
-		"BMI": round(random.uniform(15, 30), 2)
-		}
-	users.append(user)
-
-df= pd.DataFrame(users)
-df.to_csv('datas/users.csv', index=False)
+DFac= DataFactory()
+df= pd.DataFrame.from_items(DFac.generate('random_walk'))
+df.to_csv('datas/random_walk.csv')
