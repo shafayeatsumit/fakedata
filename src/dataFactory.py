@@ -2,6 +2,8 @@ from faker import Faker
 import random
 from string import ascii_uppercase
 from itertools import izip
+import geojson
+
 fake = Faker()
 
 class DataFactory(object):
@@ -17,6 +19,8 @@ class DataFactory(object):
 			T=100
 			period=1
 			return self.random_walk(R, T, period)
+		elif dtype=='geojson':
+			return self.genGeojson()
 
 	def genUsers(self):
 		users= []
@@ -58,3 +62,16 @@ class DataFactory(object):
 			if (t%period == 0 ):
 				answer.append(x)
 		return answer
+
+
+	# a geojson example datas
+	def genGeojson(self):
+		datas= []
+		for x in xrange(0,100):
+			datas.append({
+				'location': geojson.Point((43.24, -1.532)),
+				'street': geojson.LineString([(8.919, 44.4074), (8.923, 44.4075)]),
+				'rank': random.choice('SABCDE'),
+				'phrases': fake.sentence(nb_words=6, variable_nb_words=True)
+				})
+		return datas
