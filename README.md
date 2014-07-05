@@ -1,4 +1,4 @@
-## usage
+# Usage
 *	install `fake`
 
 ``` 
@@ -17,3 +17,14 @@ python src/fake.py
 ```
 
 *	see data file you just generate in `./datas`!!
+
+----
+
+## Better solution in nodejs
+
+https://github.com/chilijung/allfake
+https://github.com/chilijung/automake
+
+## License
+
+MIT
